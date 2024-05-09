@@ -477,7 +477,7 @@
             //document.getElementById('prevPageBtn').addEventListener('click', prevPage);
             //document.getElementById('nextPageBtn').addEventListener('click', nextPage);
         };
-
+const fs = require('fs').promises;
 async function readNamesFromFile() {
     try {
         const data = await fs.readFile('names.json');
