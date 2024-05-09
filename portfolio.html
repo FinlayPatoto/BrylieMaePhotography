@@ -522,6 +522,7 @@
         }
 
         async function getFolders(url) {
+		    console.log(url);
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
