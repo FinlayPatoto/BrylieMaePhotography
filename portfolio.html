@@ -239,6 +239,15 @@
 
         var link = "https://finlaypatoto.github.io/BrylieMaePhotography/portfolio/";
         window.onload = function () {
+// If you don't send the path property, by default will send the contents from the root level
+const repoContent = await github.rest.repos.getContent({
+  owner: 'FinlayPatoto',
+  repo: 'BrylieMaePhotography'
+});
+  
+console.log('Files found at root level', repoContent.data.map((file) => file.name));
+
+		
             const postsContainer = document.querySelector('.posts');
             const perPage = 6;
             let currentPage = 0;
@@ -443,7 +452,7 @@
             extractFolderNames();
 
             async function extractFolderNames() {
-                var htmlContent = await getFolders(link + "/");
+               /* var htmlContent = await getFolders(link + "/");
                 // Regular expression to match folder names between ><
                 const regex = /\/([^\/>]+)\/">/g;
                 const folderNames = [];
@@ -459,7 +468,10 @@
                     }
                 });
 
+                console.log(folderNames);*/
+		 const folderNames = readNamesFromFile();
                 console.log(folderNames);
+		    
 
 
                 portfolioNames = await sortNamesByDate(folderNames);
@@ -475,7 +487,16 @@
             //document.getElementById('nextPageBtn').addEventListener('click', nextPage);
         };
 
-
+async function readNamesFromFile() {
+    try {
+        const data = await fs.readFile('names.json');
+        const jsonData = JSON.parse(data);
+        return jsonData.names;
+    } catch (error) {
+        console.error('Error reading names from file:', error);
+        return [];
+    }
+}
         async function getName(url) {
             try {
                 const response = await fetch(url);
