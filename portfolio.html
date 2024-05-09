@@ -477,11 +477,10 @@
             //document.getElementById('prevPageBtn').addEventListener('click', prevPage);
             //document.getElementById('nextPageBtn').addEventListener('click', nextPage);
         };
-const fs = require('fs').promises;
 async function readNamesFromFile() {
     try {
-        const data = await fs.readFile('names.json');
-        const jsonData = JSON.parse(data);
+        const response = await fetch('names.json');
+        const jsonData = await response.json();
         return jsonData.names;
     } catch (error) {
         console.error('Error reading names from file:', error);
