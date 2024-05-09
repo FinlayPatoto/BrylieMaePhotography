@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Brylie Mae Photography</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+
+    <style>
+        .fixed-size-image {
+            width: 300px;
+            /* Set your desired width */
+            height: 100px;
+            /* Set your desired height */
+            object-fit: cover;
+            /* Ensure the image covers the container */
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+
+
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">Brylie Mae</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="bookings.html">Bookings</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="https://www.facebook.com/brylie.conover?mibextid=LQQJ4d"
+                        class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a>
+                </li>
+                <li><a href="https://www.instagram.com/bryliemaephotography?igsh=MTN3Mjc5Y2Y2d2I3Mg=="
+                        class="icon brands alt fa-instagram"><span class="label">Instagram</span></a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+
+            <!-- Image -->
+            <h2 id="title"></h2>
+
+            <span class="image fit"><img id="myImage" src="images/pic01.jpg" alt="" /></span>
+            <div class="box alt">
+                <div class="row gtr-50 gtr-uniform" id="collection">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <form method="post" action="#">
+                    <div class="fields">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Send Message" /></li>
+                    </ul>
+                </form>
+            </section>
+            <section class="split contact">
+                <section class="alt">
+                    <h3>Location</h3>
+                    <p>Cookville, TN<br />
+                    </p>
+                </section>
+                <section>
+                    <h3>Phone</h3>
+                    <p><a href="#">((931) 888-8888)</a></p>
+                </section>
+                <section>
+                    <h3>Email</h3>
+                    <p><a href="#">bryliemaephotography@gmail.com</a></p>
+                </section>
+                <section>
+                    <h3>Social</h3>
+                    <ul class="icons alt">
+                        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://www.facebook.com/brylie.conover?mibextid=LQQJ4d"
+                                class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a>
+                        </li>
+                        <li><a href="https://www.instagram.com/bryliemaephotography?igsh=MTN3Mjc5Y2Y2d2I3Mg=="
+                                class="icon brands alt fa-instagram"><span class="label">Instagram</span></a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </footer>
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Brylie Mae Photography</li>
+                <li>Design from: <a href="https://html5up.net">HTML5 UP</a></li>
+                <li>Designer: <a href="https://www.madfinndevelopmentco.com/">MFD Co.</a></li>
+            </ul>
+        </div>
+
+        <div id="content"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+
+
+        var outputElement = document.getElementById('output');
+        var collection = document.getElementById('collection');
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the query parameter from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const folder = urlParams.get('folder');
+
+            console.log(folder);
+
+            // Define the base path for image folders
+            const basePath = '/smithville/html5/portfolio/';
+
+            // Set the folder based on the query parameter, defaulting to 'default' if not provided
+            const folderPath = folder ? basePath + folder + '/' : basePath + 'default/';
+            console.log(folderPath);
+
+            // Get the container for the image gallery
+            const galleryContainer = document.getElementById('image-gallery');
+
+            const coverImg = folderPath + 'cover.jpg';
+            console.log(coverImg);
+
+            var img = document.getElementById('myImage');
+
+            // Change the src attribute
+            img.setAttribute('src', coverImg);
+
+
+            var images = 0;
+            // FETHC NAME and AMOUNT OF IMAGES
+            const url = "http://smvctnms001/smithville/html5/portfolio/" + folder + "/info.txt";
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const lines = data.split('\n');
+                    // Display the fetched data on the page
+                    console.log("LINE 0:", lines[0]);
+                    console.log("LINE 1:", lines[1]);
+                    setH2Content(lines[0]);
+                    images = parseInt(lines[1]);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+
+
+
+            for (var i = 1; i <= 150; i++) {
+                var imageUrl = folderPath + i + '.jpg';
+                collection.appendChild(createImage(imageUrl, i));
+            }
+
+        });
+
+        function createImage(src, id) {
+            var img = document.createElement('img');
+            img.src = src;
+            //img.id = id;
+            img.classList.add('image', 'fit');
+            //img.classList.add('image', 'fit', 'fixed-size-image');
+            var errror = "handleImageError(" + id + ")";
+            img.onerror = function () {
+                handleImageError(id);
+            };
+            console.log(img.onerror);
+
+            var span = document.createElement('span');
+            span.appendChild(img);
+
+            var col = document.createElement('div');
+            col.classList.add('col-4');
+            col.id = id;
+            col.appendChild(span);
+
+            return col;
+        }
+
+        // Function to set content of the h2 element
+        function setH2Content(content) {
+            var h2 = document.getElementById('title');
+            h2.textContent = content;
+        }
+
+        function handleImageError(imageId) {
+            // Get a reference to the image element using the passed-in ID
+            var img = document.getElementById(imageId);
+
+            // Remove the image element if it exists
+            if (img) {
+                img.parentNode.removeChild(img);
+                console.log("Image element removed.");
+            }
+        }
+
+    </script>
+    
+
+</body>
+
+</html>
