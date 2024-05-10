@@ -277,12 +277,14 @@
                     }
                 }
 
-                // Previous button
-                const prevButton = document.createElement('a');
-                prevButton.textContent = 'Previous';
-                prevButton.classList.add('previous');
-                prevButton.addEventListener('click', prevPage);
-                paginationContainer.appendChild(prevButton);
+                if (currentPage != 0) {
+                    // Previous button
+                    const prevButton = document.createElement('a');
+                    prevButton.textContent = 'Previous';
+                    prevButton.classList.add('previous');
+                    prevButton.addEventListener('click', prevPage);
+                    paginationContainer.appendChild(prevButton);
+                }
 
                 // Generate pagination links
                 for (let i = startPage; i <= endPage; i++) {
@@ -329,12 +331,14 @@
                     }
                 }
 
-                // Next button
-                const nextButton = document.createElement('a');
-                nextButton.textContent = 'Next';
-                nextButton.classList.add('next');
-                nextButton.addEventListener('click', nextPage);
-                paginationContainer.appendChild(nextButton);
+                if (currentPage != totalPages -1) {
+                    // Next button
+                    const nextButton = document.createElement('a');
+                    nextButton.textContent = 'Next';
+                    nextButton.classList.add('next');
+                    nextButton.addEventListener('click', nextPage);
+                    paginationContainer.appendChild(nextButton);
+                }
 
 
 
