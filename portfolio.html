@@ -286,7 +286,14 @@
 
                 // Generate pagination links
                 for (let i = startPage; i <= endPage; i++) {
-                    const pageLink = document.createElement('a');
+		    var pageLink;
+                    if (i === currentPage + 1) {
+                        pageLink = document.createElement('span');
+                    }
+                    else
+                    {
+                        pageLink = document.createElement('a');
+                    }
                     pageLink.textContent = i;
                     pageLink.classList.add('page');
                     if (i === currentPage + 1) {
